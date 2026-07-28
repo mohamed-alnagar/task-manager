@@ -42,6 +42,22 @@ function AppRoutes(){
                     </ProtectedRoute>
                 }
             />
+            <Route
+                path="/tasks/edit/:id"
+                element={
+                    <ProtectedRoute>
+                        <TaskForm />
+                    </ProtectedRoute>
+                    }
+            />
+            <Route
+                path="/tasks/edit/:id"
+                element={
+                    <ProtectedRoute>
+                        <TaskForm/>
+                    </ProtectedRoute>
+                }
+            />
 
 
         </Routes>

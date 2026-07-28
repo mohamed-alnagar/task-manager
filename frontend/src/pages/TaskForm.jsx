@@ -1,30 +1,92 @@
-import { useState } from "react";
-import { createTask } from "../api/task.api";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { createTask, getTask, updateTask } from "../api/task.api";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 function TaskForm(){
 
     const navigate = useNavigate();
 
+    const { id } = useParams();
 
-    const [formData,setFormData] = useState({
+    const isEditMode = Boolean(id);
 
-        title:"",
-        description:"",
-        status:"To Do",
-        priority:"Medium",
-        dueDate:""
+
+
+    const [formData, setFormData] = useState({
+
+        title: "",
+        description: "",
+        status: "To Do",
+        priority: "Medium",
+        dueDate: ""
 
     });
 
 
-    const [error,setError] = useState("");
-    const [loading,setLoading] = useState(false);
+
+    const [error, setError] = useState("");
+
+    const [loading, setLoading] = useState(false);
 
 
 
-    const handleChange = (e)=>{
+
+    useEffect(() => {
+
+
+        const fetchTask = async () => {
+
+
+            try {
+
+
+                const response = await getTask(id);
+
+
+                setFormData({
+
+                    title: response.data.title,
+                    description: response.data.description,
+                    status: response.data.status,
+                    priority: response.data.priority,
+                    dueDate: response.data.dueDate?.slice(0,10)
+
+                });
+
+
+
+            } catch (error) {
+
+
+                setError(
+                    error.response?.data?.message ||
+                    "Failed to load task"
+                );
+
+
+            }
+
+
+        };
+
+
+
+        if(isEditMode){
+
+            fetchTask();
+
+        }
+
+
+    }, [id, isEditMode]);
+
+
+
+
+
+    const handleChange = (e) => {
+
 
         setFormData({
 
@@ -34,40 +96,69 @@ function TaskForm(){
 
         });
 
+
     };
 
 
 
-    const handleSubmit = async(e)=>{
+
+
+    const handleSubmit = async(e) => {
+
 
         e.preventDefault();
 
 
-        try{
+        try {
+
 
             setLoading(true);
 
 
-            await createTask(formData);
+
+            if(isEditMode){
+
+
+                await updateTask(id, formData);
+
+
+            }else{
+
+
+                await createTask(formData);
+
+
+            }
+
 
 
             navigate("/");
 
 
-        }catch(error){
+
+        } catch(error){
+
 
             setError(
-                error.response?.data?.message || 
-                "Failed to create task"
+
+                error.response?.data?.message ||
+                "Failed to save task"
+
             );
 
-        }finally{
+
+
+        } finally {
+
 
             setLoading(false);
 
+
         }
 
+
     };
+
 
 
 
@@ -75,10 +166,18 @@ function TaskForm(){
 
         <div>
 
-            <h1>Create Task</h1>
+
+            <h1>
+
+                {isEditMode ? "Edit Task" : "Create Task"}
+
+            </h1>
+
 
 
             {error && <p>{error}</p>}
+
+
 
 
             <form onSubmit={handleSubmit}>
@@ -114,6 +213,7 @@ function TaskForm(){
 
 
 
+
                 <select
 
                     name="status"
@@ -128,9 +228,11 @@ function TaskForm(){
                         To Do
                     </option>
 
+
                     <option value="In Progress">
                         In Progress
                     </option>
+
 
                     <option value="Done">
                         Done
@@ -138,6 +240,8 @@ function TaskForm(){
 
 
                 </select>
+
+
 
 
 
@@ -150,6 +254,7 @@ function TaskForm(){
                     onChange={handleChange}
 
                 >
+
 
                     <option value="Low">
                         Low
@@ -170,6 +275,8 @@ function TaskForm(){
 
 
 
+
+
                 <input
 
                     type="date"
@@ -184,14 +291,31 @@ function TaskForm(){
 
 
 
+
+
                 <button disabled={loading}>
 
-                    {loading ? "Creating..." : "Create Task"}
+
+                    {
+                        loading
+                        ?
+                        "Saving..."
+                        :
+                        isEditMode
+                        ?
+                        "Update Task"
+                        :
+                        "Create Task"
+                    }
+
+
 
                 </button>
 
 
+
             </form>
+
 
 
         </div>

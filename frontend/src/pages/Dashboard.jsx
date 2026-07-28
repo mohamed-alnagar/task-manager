@@ -80,6 +80,11 @@ useEffect(() => {
                     <TaskCard
                         key={task._id}
                         task={task}
+                        onDelete={(id)=>{
+
+                        setTasks(tasks.filter(task => task._id !== id));
+
+                        }}
                     />
 
                 ))
