@@ -171,3 +171,29 @@ JWT_EXPIRE=7d
 You can use the following account to test the application:
 test email : test@gmail.com 
 password : 123456
+
+# 📸 Screenshots
+
+## Login Page
+
+![Login](./screenshots/login.png)
+
+---
+
+## Register Page
+
+![Register](./screenshots/register.png)
+
+---
+
+
+
+## Dashboard Page
+
+![Create Task](./screenshots/dashboard.png)
+
+---
+
+## Form Task
+
+![Edit Task](./screenshots/task-form.png)
