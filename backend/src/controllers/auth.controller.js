@@ -72,7 +72,7 @@ const login = async(req,res)=>{
 
 
         const user = await User.findOne({email});
-
+        
 
         if(!user){
 
@@ -88,6 +88,7 @@ const login = async(req,res)=>{
             password,
             user.password
         );
+
 
 
         if(!isPasswordCorrect){
