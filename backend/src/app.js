@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const app =express();
 const authRoutes=require('./routes/auth.routes')
+const errorHandler = require("./middleware/error.middleware");
+
 
 // middlewares 
 app.use(cors());
@@ -15,4 +17,6 @@ app.get('/',(req,res)=>{
         message:"Task Manager API is running..."
     })
 })
+
+app.use(errorHandler);
 module.exports = app;
