@@ -1,60 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+    --color-paper: #F4F5F7;
+    --color-card: #FFFFFF;
+    --color-ink: #1F2430;
+    --color-ink-soft: #5B6270;
+    --color-border: #E1E3E8;
+
+    --color-indigo: #3E4C7C;
+    --color-indigo-soft: #EEF0F7;
+
+    --color-amber: #D98E3F;
+    --color-amber-soft: #FBF1E3;
+
+    --color-teal: #2F7A6C;
+    --color-teal-soft: #EAF3F1;
+
+    --color-rust: #B4472F;
+    --color-rust-soft: #FBEBE7;
+
+    --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+    --font-body: 'Inter', 'Segoe UI', sans-serif;
+    --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 20px;
-}
-
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    margin-bottom: 20px;
-}
-
-
-button {
-    padding: 8px 15px;
-    cursor: pointer;
-    margin: 5px;
-}
-
-
-
-.task-card {
-
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 8px;
-
-}
-
-
-.task-card h3 {
-
-    margin-top: 0;
-
-}
-
-
-
-input,
-textarea,
-select {
-
-    display: block;
-    width: 300px;
-    padding: 8px;
-    margin: 10px 0;
-
-}
-
-
-
-textarea {
-
-    height: 100px;
-
+    background: var(--color-paper);
+    font-family: var(--font-body);
+    color: var(--color-ink);
 }
