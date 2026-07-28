@@ -1,9 +1,11 @@
 import api from "./axios";
 
 
-export const getTasks = () => {
+export const getTasks = (params) => {
 
-    return api.get("/tasks");
+    return api.get("/tasks", {
+        params
+    });
 
 };
 

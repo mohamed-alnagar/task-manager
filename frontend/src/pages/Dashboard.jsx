@@ -7,6 +7,13 @@ const navigate = useNavigate();
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [filters,setFilters] = useState({
+
+    search:"",
+    status:"",
+    priority:""
+
+});
 
 useEffect(() => {
 
@@ -14,7 +21,7 @@ useEffect(() => {
 
         try {
 
-            const response = await getTasks();
+            const response = await getTasks(filters);
 
             console.log(response.data);
 
@@ -36,7 +43,7 @@ useEffect(() => {
 
     loadTasks();
 
-}, []);
+}, [filters]);
 
     if (loading) {
 
@@ -62,6 +69,79 @@ useEffect(() => {
     <div>
 
         <h1>My Tasks</h1>
+        <input
+    placeholder="Search tasks..."
+    value={filters.search}
+    onChange={(e)=>
+        setFilters({
+            ...filters,
+            search:e.target.value
+        })
+    }
+/>
+
+
+<select
+    value={filters.status}
+    onChange={(e)=>
+        setFilters({
+            ...filters,
+            status:e.target.value
+        })
+    }
+>
+
+    <option value="">
+        All Status
+    </option>
+
+    <option value="To Do">
+        To Do
+    </option>
+
+    <option value="In Progress">
+        In Progress
+    </option>
+
+    <option value="Done">
+        Done
+    </option>
+
+</select>
+
+
+
+<select
+    value={filters.priority}
+    onChange={(e)=>
+        setFilters({
+            ...filters,
+            priority:e.target.value
+        })
+    }
+>
+
+    <option value="">
+        All Priority
+    </option>
+
+
+    <option value="Low">
+        Low
+    </option>
+
+
+    <option value="Medium">
+        Medium
+    </option>
+
+
+    <option value="High">
+        High
+    </option>
+
+
+</select>
 
         <button onClick={() => navigate("/tasks/new")}>
             Add Task
