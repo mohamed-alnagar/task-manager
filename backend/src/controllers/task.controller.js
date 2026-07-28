@@ -52,7 +52,9 @@ const getTasks = async (req,res)=>{
         const {
             search,
             status,
-            priority
+            priority,
+            page = 1,
+            limit = 10
         } = req.query;
 
 
@@ -93,16 +95,34 @@ const getTasks = async (req,res)=>{
         }
 
 
+        // Pagination settings
+        const pageNumber = parseInt(page, 10) || 1;
+        const limitNumber = parseInt(limit, 10) || 10;
+        const skip = (pageNumber - 1) * limitNumber;
 
-        const tasks = await Task.find(filter);
+        const tasks = await Task.find(filter).skip(skip).limit(limitNumber);
 
+        const totalDocs = await Task.countDocuments(filter);
+        const totalPages = Math.ceil(totalDocs / limitNumber);
 
+        const doneDocs = await Task.countDocuments({ ...filter, status: "Done" });
+        const openDocs = totalDocs - doneDocs;
 
         res.status(200).json({
 
-            count:tasks.length,
+            count: tasks.length,
 
-            tasks
+            tasks,
+            
+            currentPage: pageNumber,
+            
+            totalPages,
+            
+            stats: {
+                total: totalDocs,
+                done: doneDocs,
+                open: openDocs
+            }
 
         });
 
