@@ -6,7 +6,9 @@ const authRoutes=require('./routes/auth.routes')
 // middlewares 
 app.use(cors());
 app.use(express.json())
+const taskRoutes = require("./routes/task.routes");
 app.use("/api/auth", authRoutes);
+app.use("/api/tasks", taskRoutes);
 
 app.get('/',(req,res)=>{
     res.json({
