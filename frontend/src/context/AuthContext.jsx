@@ -4,7 +4,14 @@ import { AuthContext } from "./auth.context";
 
 export const AuthProvider = ({children}) => {
 
-    const [user,setUser] = useState(null);
+
+    const [user,setUser] = useState(() => {
+
+        const token = localStorage.getItem("token");
+
+        return token ? {} : null;
+
+    });
 
 
     const login = (userData, token) => {
@@ -12,10 +19,7 @@ export const AuthProvider = ({children}) => {
         setUser(userData);
 
         localStorage.setItem("token", token);
-         localStorage.setItem(
-            "user",
-            JSON.stringify(userData)
-        );
+
     };
 
 
@@ -24,13 +28,12 @@ export const AuthProvider = ({children}) => {
         setUser(null);
 
         localStorage.removeItem("token");
-        localStorage.removeItem("user");
-
 
     };
 
 
     return (
+
         <AuthContext.Provider
             value={{
                 user,
@@ -38,8 +41,11 @@ export const AuthProvider = ({children}) => {
                 logout
             }}
         >
+
             {children}
+
         </AuthContext.Provider>
+
     );
 
 };
