@@ -1,7 +1,10 @@
 const express = require("express");
 
 const router = express.Router();
-
+const validate = require("../middleware/validation.middleware");
+const {
+    createTaskValidator
+} = require("../validators/task.validator");
 
 const {
     createTask ,getTasks ,  updateTask ,deleteTask
@@ -15,6 +18,8 @@ const protect = require("../middleware/auth.middleware");
 router.post(
     "/",
     protect,
+    createTaskValidator,
+    validate,
     createTask
 );
 router.get(
