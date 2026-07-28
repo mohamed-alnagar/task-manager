@@ -49,31 +49,76 @@ const getTasks = async (req,res)=>{
 
     try{
 
+        const {
+            search,
+            status,
+            priority
+        } = req.query;
 
-        const tasks = await Task.find({
+
+        let filter = {
+
             user:req.user._id
-        });
+
+        };
+
+
+        // Search by title
+
+        if(search){
+
+            filter.title = {
+                $regex: search,
+                $options:"i"
+            };
+
+        }
+
+
+        // Filter by status
+
+        if(status){
+
+            filter.status = status;
+
+        }
+
+
+        // Filter by priority
+
+        if(priority){
+
+            filter.priority = priority;
+
+        }
+
+
+
+        const tasks = await Task.find(filter);
+
 
 
         res.status(200).json({
 
-            count: tasks.length,
+            count:tasks.length,
 
             tasks
 
         });
 
 
+
     }catch(error){
 
         res.status(500).json({
+
             message:error.message
+
         });
 
     }
 
 };
-
 const updateTask = async(req,res)=>{
 
     try{
