@@ -80,11 +80,7 @@ function TaskCard({ task, onDelete }) {
                     </h3>
 
 
-                    <span className="task-code">
-
-                        TSK-{task._id?.slice(-4)}
-
-                    </span>
+                    
 
 
                 </div>

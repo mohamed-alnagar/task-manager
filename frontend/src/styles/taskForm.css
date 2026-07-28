@@ -1,0 +1,149 @@
+.task-form-container {
+    min-height: 100vh;
+    background: var(--color-paper);
+    display: flex;
+    justify-content: center;
+    padding: 48px 20px;
+}
+
+.task-form-card {
+    width: 100%;
+    max-width: 480px;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 36px 32px;
+    height: fit-content;
+    box-shadow: 0 4px 16px rgba(31, 36, 48, 0.06);
+    box-sizing: border-box;
+}
+
+.form-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--color-indigo);
+    display: block;
+}
+
+.task-form-card h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--color-ink);
+    letter-spacing: -0.02em;
+    margin: 8px 0 24px;
+}
+
+.form-error {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--color-rust);
+    background: var(--color-rust-soft);
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin: 0 0 16px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: 6px;
+}
+
+.task-form-card input,
+.task-form-card select,
+.task-form-card textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--color-ink);
+    background: var(--color-paper);
+    padding: 11px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    outline: none;
+}
+
+.task-form-card textarea {
+    resize: vertical;
+    min-height: 90px;
+    line-height: 1.5;
+}
+
+.task-form-card select {
+    cursor: pointer;
+}
+
+.task-form-card input:focus,
+.task-form-card select:focus,
+.task-form-card textarea:focus {
+    border-color: var(--color-indigo);
+    background: var(--color-card);
+}
+
+.task-form-card input::placeholder,
+.task-form-card textarea::placeholder {
+    color: var(--color-ink-soft);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.form-actions button:not(.cancel-btn) {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: var(--color-indigo);
+    color: white;
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.form-actions button:not(.cancel-btn):hover {
+    opacity: 0.92;
+}
+
+.form-actions button:not(.cancel-btn):disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.cancel-btn {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: var(--color-card);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cancel-btn:hover {
+    background: var(--color-paper);
+}
