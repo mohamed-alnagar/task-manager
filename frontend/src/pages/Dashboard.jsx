@@ -70,44 +70,44 @@ useEffect(() => {
 
         <h1>My Tasks</h1>
         <input
-    placeholder="Search tasks..."
-    value={filters.search}
-    onChange={(e)=>
-        setFilters({
-            ...filters,
-            search:e.target.value
-        })
-    }
-/>
+            placeholder="Search tasks..."
+            value={filters.search}
+            onChange={(e)=>
+                setFilters({
+                    ...filters,
+                    search:e.target.value
+                })
+            }
+        />
 
 
-<select
-    value={filters.status}
-    onChange={(e)=>
-        setFilters({
-            ...filters,
-            status:e.target.value
-        })
-    }
->
+    <select
+            value={filters.status}
+            onChange={(e)=>
+                setFilters({
+                    ...filters,
+                    status:e.target.value
+                })
+            }
+        >
 
-    <option value="">
-        All Status
-    </option>
+        <option value="">
+            All Status
+        </option>
 
-    <option value="To Do">
-        To Do
-    </option>
+        <option value="To Do">
+            To Do
+        </option>
 
-    <option value="In Progress">
-        In Progress
-    </option>
+        <option value="In Progress">
+            In Progress
+        </option>
 
-    <option value="Done">
-        Done
-    </option>
+        <option value="Done">
+            Done
+        </option>
 
-</select>
+    </select>
 
 
 

@@ -1,6 +1,60 @@
 body {
-  margin: 0;
-  background: white;
-  color: black;
-  font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+
+button {
+    padding: 8px 15px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+
+
+.task-card {
+
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+
+}
+
+
+.task-card h3 {
+
+    margin-top: 0;
+
+}
+
+
+
+input,
+textarea,
+select {
+
+    display: block;
+    width: 300px;
+    padding: 8px;
+    margin: 10px 0;
+
+}
+
+
+
+textarea {
+
+    height: 100px;
+
 }

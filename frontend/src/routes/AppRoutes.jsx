@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Dashboard from "../pages/Dashboard";
-import { BrowserRouter } from "react-router-dom";
 import TaskForm from "../pages/TaskForm";
 import ProtectedRoute from "../components/ProtectedRoute";
 
@@ -11,7 +10,6 @@ import ProtectedRoute from "../components/ProtectedRoute";
 function AppRoutes(){
 
     return (
-        <BrowserRouter>
         <Routes>
 
             <Route
@@ -62,7 +60,6 @@ function AppRoutes(){
 
         </Routes>
         
-        </BrowserRouter>
 
         
 
